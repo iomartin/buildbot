@@ -796,7 +796,8 @@ class ForceScheduler(base.BaseScheduler):
         return builderNames
 
     @defer.inlineCallbacks
-    def force(self, owner, builderNames=None, builderid=None, **kwargs):
+    def force(self, owner, builderNames=None, builderid=None, priority=0,
+              **kwargs):
         """
         We check the parameters, and launch the build, if everything is correct
         """
@@ -840,6 +841,7 @@ class ForceScheduler(base.BaseScheduler):
             sourcestamps=sourcestamps,
             properties=properties,
             builderNames=builderNames,
+            priority=priority,
         )
 
         return res
